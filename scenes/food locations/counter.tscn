@@ -1,0 +1,70 @@
+[gd_scene load_steps=11 format=3 uid="uid://daftayfkp3dwh"]
+
+[ext_resource type="PackedScene" uid="uid://cqlh353itkokj" path="res://scenes/components/interaction/interaction_component.tscn" id="1_8isoj"]
+[ext_resource type="Script" path="res://scenes/food locations/counter.gd" id="1_onr8q"]
+[ext_resource type="Texture2D" uid="uid://b114u7ae7fuwm" path="res://sprites/counters.png" id="2_1l28b"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_onpg3"]
+atlas = ExtResource("2_1l28b")
+region = Rect2(0, 0, 21, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lum0e"]
+atlas = ExtResource("2_1l28b")
+region = Rect2(21, 0, 21, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w07jf"]
+atlas = ExtResource("2_1l28b")
+region = Rect2(0, 19, 21, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uv34a"]
+atlas = ExtResource("2_1l28b")
+region = Rect2(21, 19, 21, 19)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vs74g"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_onpg3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lum0e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w07jf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uv34a")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j5fgn"]
+size = Vector2(27, 25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qv3cn"]
+size = Vector2(20, 19)
+
+[node name="Counter" type="StaticBody2D" node_paths=PackedStringArray("interaction_component", "node_holding_item", "animated_sprite")]
+script = ExtResource("1_onr8q")
+interaction_component = NodePath("InteractionComponent")
+node_holding_item = NodePath("HeldItem")
+animated_sprite = NodePath("AnimatedSprite2D")
+can_place_plates_on = null
+
+[node name="HeldItem" type="Node2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_vs74g")
+
+[node name="InteractionComponent" parent="." instance=ExtResource("1_8isoj")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionComponent"]
+position = Vector2(-0.5, 0.5)
+shape = SubResource("RectangleShape2D_j5fgn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_qv3cn")

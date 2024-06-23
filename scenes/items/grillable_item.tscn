@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://bcmqaxu60wt8s"]
+
+[ext_resource type="PackedScene" uid="uid://bqag13c7jm8kf" path="res://scenes/items/item.tscn" id="1_6jw4s"]
+[ext_resource type="Script" path="res://scenes/items/grillable_item.gd" id="2_d60tb"]
+
+[node name="GrillableItem" node_paths=PackedStringArray("animated_sprite") instance=ExtResource("1_6jw4s")]
+script = ExtResource("2_d60tb")
+animated_sprite = NodePath("AnimatedSprite2D")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="0"]

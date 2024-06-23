@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dbvjv6c0mt830"]
+
+[ext_resource type="Script" path="res://scenes/customers/customer.gd" id="1_mjatk"]
+
+[node name="Customer" type="Node2D" node_paths=PackedStringArray("animated_sprite")]
+script = ExtResource("1_mjatk")
+animated_sprite = NodePath("AnimatedSprite2D")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

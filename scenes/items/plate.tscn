@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://hmfr773rggcw"]
+
+[ext_resource type="Script" path="res://scenes/items/plate.gd" id="1_7yxo3"]
+[ext_resource type="PackedScene" uid="uid://cqlh353itkokj" path="res://scenes/components/interaction/interaction_component.tscn" id="2_4ou6l"]
+[ext_resource type="Texture2D" uid="uid://sk4dimjmr30n" path="res://sprites/plate.png" id="2_35ywy"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_aktu4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_35ywy")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vicrx"]
+size = Vector2(33, 31)
+
+[node name="Plate" type="Node2D" node_paths=PackedStringArray("interaction_component", "node_holding_items")]
+script = ExtResource("1_7yxo3")
+interaction_component = NodePath("InteractionComponent")
+node_holding_items = NodePath("HeldItems")
+item_name = "Plate"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(0.75, 0.75)
+sprite_frames = SubResource("SpriteFrames_aktu4")
+
+[node name="HeldItems" type="Node2D" parent="."]
+
+[node name="InteractionComponent" parent="." node_paths=PackedStringArray("collision_shape") instance=ExtResource("2_4ou6l")]
+collision_shape = NodePath("CollisionShape2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionComponent"]
+shape = SubResource("RectangleShape2D_vicrx")

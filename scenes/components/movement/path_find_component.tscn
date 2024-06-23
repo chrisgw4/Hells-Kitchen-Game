@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://cfiedybmpr18s"]
+
+[ext_resource type="Script" path="res://scenes/components/movement/path_find_component.gd" id="1_8sxs8"]
+
+[node name="PathFindComponent" type="Node2D"]
+script = ExtResource("1_8sxs8")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+avoidance_enabled = true
+
+[node name="PathfindTimer" type="Timer" parent="."]
+wait_time = 0.2
+
+[connection signal="velocity_computed" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]
+[connection signal="timeout" from="PathfindTimer" to="." method="_on_pathfind_timer_timeout"]

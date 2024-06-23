@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://facia08iryr6"]
+
+[ext_resource type="Script" path="res://scenes/components/FSM/FSM.gd" id="1_pvjig"]
+
+[node name="FiniteStateMachine" type="Node"]
+script = ExtResource("1_pvjig")

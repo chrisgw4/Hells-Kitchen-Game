@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://dkkisy1p3a080"]
+
+[ext_resource type="PackedScene" uid="uid://bqag13c7jm8kf" path="res://scenes/items/item.tscn" id="1_ogipt"]
+[ext_resource type="Script" path="res://scenes/items/choppable_item.gd" id="2_st8pg"]
+
+[node name="ChoppableItem" node_paths=PackedStringArray("animated_sprite") instance=ExtResource("1_ogipt")]
+script = ExtResource("2_st8pg")
+animated_sprite = NodePath("AnimatedSprite2D")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="0"]
+texture_filter = 1

@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://ciq7uaue7nd8f"]
+
+[ext_resource type="Script" path="res://scenes/food locations/drink_dispensary.gd" id="1_pi082"]
+[ext_resource type="PackedScene" uid="uid://cqlh353itkokj" path="res://scenes/components/interaction/interaction_component.tscn" id="2_xqbai"]
+
+[node name="DrinkDispensary" type="StaticBody2D"]
+script = ExtResource("1_pi082")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+
+[node name="InteractionComponent" parent="." instance=ExtResource("2_xqbai")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionComponent"]

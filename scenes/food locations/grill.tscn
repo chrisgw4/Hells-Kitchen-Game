@@ -1,0 +1,84 @@
+[gd_scene load_steps=13 format=3 uid="uid://cpvsvsal71hcy"]
+
+[ext_resource type="PackedScene" uid="uid://b7tw5uf7y37wj" path="res://scenes/food locations/cooking_station.tscn" id="1_e17rx"]
+[ext_resource type="Shader" path="res://scenes/food locations/grill.gdshader" id="2_8b48r"]
+[ext_resource type="Texture2D" uid="uid://dputi7y7rmdmq" path="res://sprites/grill (1).png" id="2_xtp41"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qjbgv"]
+shader = ExtResource("2_8b48r")
+shader_parameter/color1 = Color(0.882353, 0.305882, 0.00784314, 1)
+shader_parameter/color2 = Color(0.972549, 0.784314, 0.027451, 1)
+shader_parameter/threshold = 0.59
+shader_parameter/intensity = 1.95
+shader_parameter/opacity = 0.3
+shader_parameter/glow_color = Color(0.851815, 0, 0.171877, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5by8v"]
+atlas = ExtResource("2_xtp41")
+region = Rect2(0, 0, 21, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j1hqs"]
+atlas = ExtResource("2_xtp41")
+region = Rect2(0, 19, 21, 19)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xmlvm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5by8v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j1hqs")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_btbrq"]
+size = Vector2(14, 15)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kp84o"]
+size = Vector2(22, 19)
+
+[sub_resource type="Animation" id="Animation_hobtp"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_odhqt"]
+resource_name = "glow"
+loop_mode = 1
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_eskgi"]
+_data = {
+"RESET": SubResource("Animation_hobtp"),
+"glow": SubResource("Animation_odhqt")
+}
+
+[node name="Grill" node_paths=PackedStringArray("animated_sprite", "animation_player") instance=ExtResource("1_e17rx")]
+animated_sprite = NodePath("AnimatedSprite2D")
+animation_player = NodePath("AnimationPlayer")
+
+[node name="AnimatedSprite2D" parent="." index="1"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_qjbgv")
+sprite_frames = SubResource("SpriteFrames_xmlvm")
+
+[node name="CollisionShape2D" parent="InteractionComponent" index="0"]
+position = Vector2(-18, 0)
+shape = SubResource("RectangleShape2D_btbrq")
+
+[node name="TextureProgressBar" parent="." index="4"]
+offset_left = -3.0
+offset_top = -9.0
+offset_right = 597.0
+offset_bottom = 591.0
+scale = Vector2(0.01, 0.01)
+value = 16.57
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="5"]
+shape = SubResource("RectangleShape2D_kp84o")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="6"]
+libraries = {
+"": SubResource("AnimationLibrary_eskgi")
+}

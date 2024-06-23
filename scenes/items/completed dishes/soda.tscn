@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dny063vm3w6rq"]
+
+[ext_resource type="PackedScene" uid="uid://bpsbe6a1l80bn" path="res://scenes/items/completed dishes/completed_dish.tscn" id="1_hm3rp"]
+
+[node name="Soda" instance=ExtResource("1_hm3rp")]
+ingredients = Array[String](["Soda"])
+item_name = "Soda"

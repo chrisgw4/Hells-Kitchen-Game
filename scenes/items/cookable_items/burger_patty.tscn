@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://1nmupeiwqevr"]
+
+[ext_resource type="PackedScene" uid="uid://cuwcqknqov3ve" path="res://scenes/items/cookable_item.tscn" id="1_gud6x"]
+[ext_resource type="Texture2D" uid="uid://wjo7fsy15oak" path="res://sprites/patties/patty-01.png" id="2_eqiom"]
+[ext_resource type="Texture2D" uid="uid://cmr8oblm0q4d0" path="res://sprites/patties/patty-02.png" id="3_bktrq"]
+[ext_resource type="Texture2D" uid="uid://ccb102gf5npgo" path="res://sprites/patties/patty-03.png" id="4_rtiy6"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jx2gp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_eqiom")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_bktrq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_rtiy6")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="BurgerPatty" instance=ExtResource("1_gud6x")]
+item_name = "BurgerPatty"
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_jx2gp")

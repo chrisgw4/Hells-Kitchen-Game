@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://bpsbe6a1l80bn"]
+
+[ext_resource type="PackedScene" uid="uid://bqag13c7jm8kf" path="res://scenes/items/item.tscn" id="1_dvi0r"]
+[ext_resource type="Script" path="res://scenes/items/completed dishes/CompletedDish.gd" id="2_x5y2e"]
+
+[node name="CompletedDish" node_paths=PackedStringArray("animated_sprite") instance=ExtResource("1_dvi0r")]
+script = ExtResource("2_x5y2e")
+animated_sprite = NodePath("AnimatedSprite2D")
+ingredients = Array[String]([])
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="0"]

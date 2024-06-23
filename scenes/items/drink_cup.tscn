@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://dqq06sqekda8r"]
+
+[ext_resource type="PackedScene" uid="uid://bqag13c7jm8kf" path="res://scenes/items/item.tscn" id="1_3f0y4"]
+[ext_resource type="Script" path="res://scenes/items/drink_cup.gd" id="2_oh8pd"]
+
+[node name="DrinkCup" node_paths=PackedStringArray("animated_sprite") instance=ExtResource("1_3f0y4")]
+script = ExtResource("2_oh8pd")
+animated_sprite = NodePath("AnimatedSprite2D")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="0"]

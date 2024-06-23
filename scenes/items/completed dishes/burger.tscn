@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://dwynvj6cjjhlr"]
+
+[ext_resource type="PackedScene" uid="uid://bpsbe6a1l80bn" path="res://scenes/items/completed dishes/completed_dish.tscn" id="1_tqivg"]
+[ext_resource type="Texture2D" uid="uid://d4grptaydrlx0" path="res://sprites/burger/burger_complete.png" id="2_w1ppn"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_a05fy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_w1ppn")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Burger" instance=ExtResource("1_tqivg")]
+ingredients = Array[String](["Bread", "BurgerPatty", "Lettuce"])
+item_name = "Burger"
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_a05fy")

@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://cuwcqknqov3ve"]
+
+[ext_resource type="PackedScene" uid="uid://bqag13c7jm8kf" path="res://scenes/items/item.tscn" id="1_lr0o2"]
+[ext_resource type="Script" path="res://scenes/items/cookable_item.gd" id="2_726lq"]
+
+[node name="CookableItem" node_paths=PackedStringArray("animated_sprite") instance=ExtResource("1_lr0o2")]
+script = ExtResource("2_726lq")
+animated_sprite = NodePath("AnimatedSprite2D")
+total_cook_states = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="0"]

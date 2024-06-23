@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://dnx3gmrwonby1"]
+
+[ext_resource type="PackedScene" uid="uid://dkkisy1p3a080" path="res://scenes/items/choppable_item.tscn" id="1_q6lqx"]
+[ext_resource type="Texture2D" uid="uid://cd8y24d72nssv" path="res://sprites/lettuce/lettuce_unchopped.png" id="2_t3lce"]
+[ext_resource type="Texture2D" uid="uid://c68tvrn3fbmub" path="res://sprites/lettuce/lettuce_chopped.png" id="3_e6fqx"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8twfk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_t3lce")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_e6fqx")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Lettuce" instance=ExtResource("1_q6lqx")]
+item_name = "Lettuce"
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+scale = Vector2(0.75, 0.75)
+sprite_frames = SubResource("SpriteFrames_8twfk")
