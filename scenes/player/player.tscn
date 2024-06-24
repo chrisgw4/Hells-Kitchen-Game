@@ -1,9 +1,10 @@
-[gd_scene load_steps=36 format=3 uid="uid://bmlpj60vhj8a4"]
+[gd_scene load_steps=40 format=3 uid="uid://bmlpj60vhj8a4"]
 
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_5xyyn"]
 [ext_resource type="PackedScene" uid="uid://b4asi3l2vysek" path="res://scenes/components/movement/velocity_component.tscn" id="2_15v3k"]
 [ext_resource type="Script" path="res://scenes/player/PlayerFSM.gd" id="3_b77qu"]
 [ext_resource type="Texture2D" uid="uid://dmr585x1gqc57" path="res://sprites/player_sprites.png" id="4_dqq1e"]
+[ext_resource type="FontFile" uid="uid://c8ciw5xgn1xo5" path="res://sprites/rainyhearts.ttf" id="5_gt3us"]
 
 [sub_resource type="Animation" id="Animation_jkmrf"]
 length = 0.001
@@ -399,6 +400,67 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_6gp3e"]
 radius = 5.09902
 
+[sub_resource type="Animation" id="Animation_vcrd2"]
+resource_name = "Hover E"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/path = NodePath("Node2D/RichTextLabel:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-2.5, -40), Vector2(-2.5, -48), Vector2(-2.5, -40)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node2D:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 6), Vector2(0, -2), Vector2(0, 6)]
+}
+
+[sub_resource type="Animation" id="Animation_ols0l"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D/RichTextLabel:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-4, -40)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_umdqa"]
+_data = {
+"Hover E": SubResource("Animation_vcrd2"),
+"RESET": SubResource("Animation_ols0l")
+}
+
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("vel_component", "node_carrying_item", "animated_sprite")]
 light_mask = 0
 collision_layer = 2
@@ -434,3 +496,21 @@ offset = Vector2(-0.5, -14)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, -1)
 shape = SubResource("CircleShape2D_6gp3e")
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_umdqa")
+}
+
+[node name="Node2D" type="Node2D" parent="."]
+visible = false
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Node2D"]
+offset_left = -4.0
+offset_top = -40.0
+offset_right = 36.0
+offset_bottom = 21.0
+scale = Vector2(0.15, 0.15)
+theme_override_fonts/normal_font = ExtResource("5_gt3us")
+theme_override_font_sizes/normal_font_size = 64
+text = "E"

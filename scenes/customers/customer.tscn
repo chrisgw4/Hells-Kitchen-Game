@@ -1,9 +1,44 @@
-[gd_scene load_steps=2 format=3 uid="uid://dbvjv6c0mt830"]
+[gd_scene load_steps=6 format=3 uid="uid://dbvjv6c0mt830"]
 
 [ext_resource type="Script" path="res://scenes/customers/customer.gd" id="1_mjatk"]
+[ext_resource type="Texture2D" uid="uid://dk63iegn7cb3n" path="res://sprites/customer_1.png" id="2_mltgh"]
+[ext_resource type="Texture2D" uid="uid://cn3u51l3d1rb" path="res://sprites/customer_2.png" id="3_3np4b"]
+[ext_resource type="Texture2D" uid="uid://dg1i1xkci27ky" path="res://sprites/customer_3.png" id="4_8irop"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7on5k"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_mltgh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_3np4b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_8irop")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Customer" type="Node2D" node_paths=PackedStringArray("animated_sprite")]
 script = ExtResource("1_mjatk")
 animated_sprite = NodePath("AnimatedSprite2D")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_7on5k")
+
+[node name="PerfectTierTimer" type="Timer" parent="."]
+wait_time = 20.0
+one_shot = true
+autostart = true
+
+[node name="MediumTierTimer" type="Timer" parent="."]
+wait_time = 25.0
+one_shot = true
+
+[connection signal="tree_exiting" from="." to="." method="_on_tree_exiting"]
+[connection signal="timeout" from="PerfectTierTimer" to="." method="_on_perfect_tier_timer_timeout"]
+[connection signal="timeout" from="MediumTierTimer" to="." method="_on_medium_tier_timer_timeout"]

@@ -41,7 +41,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j5fgn"]
-size = Vector2(27, 25)
+size = Vector2(32, 23)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qv3cn"]
 size = Vector2(20, 19)
@@ -51,7 +51,6 @@ script = ExtResource("1_onr8q")
 interaction_component = NodePath("InteractionComponent")
 node_holding_item = NodePath("HeldItem")
 animated_sprite = NodePath("AnimatedSprite2D")
-can_place_plates_on = null
 
 [node name="HeldItem" type="Node2D" parent="."]
 

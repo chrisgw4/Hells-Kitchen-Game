@@ -27,6 +27,15 @@ func _ready() -> void:
 	interaction_component.player_exited.connect(_player_exited)
 	progress_bar.max_value = timer.wait_time
 	set_physics_process(false)
+	interaction_component.player_entered.connect(_animate_shine)
+	interaction_component.player_exited.connect(_stop_shine)
+
+func _animate_shine(_body):
+	$AnimationPlayer.play("shimmer")
+
+func _stop_shine(_body):
+	$AnimationPlayer.play("RESET")
+
 
 
 func _player_entered(body:Player):
@@ -40,10 +49,12 @@ func _player_entered(body:Player):
 func cancel_process() -> void:
 	progress_bar.hide()
 	timer.stop()
+	$PlayAudio.stop()
+	$AudioStreamPlayer2D.playing = false
 	set_physics_process(false)
 	
 
-func _player_exited(body:Player):
+func _player_exited(_body:Player):
 	#player.stop_using_cooking_station.disconnect(cancel_process)
 	cancel_process()
 	player = null
@@ -51,15 +62,15 @@ func _player_exited(body:Player):
 func _update_progress_bar() -> void:
 	progress_bar.value = timer.wait_time - timer.time_left
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	_update_progress_bar()
 
 
-func _input(event) -> void:
+func _unhandled_input(_event) -> void:
 	if Input.is_action_just_pressed("interact_item") and player:
 		# if the grill does not have an item at the moment
 		if not item and player.carried_item and player.carried_item is ChoppableItem and not player.carried_item.chopped:
-			player.start_using_station()
+			#player.start_using_station()
 			item = player.carried_item # set the item to the player's carried item
 			player.carried_item = null
 			item.reparent(node_holding_item)
@@ -68,22 +79,65 @@ func _input(event) -> void:
 			start_chopping() # start the timer
 			
 		elif item and not player.carried_item:
-			item.reparent(player.node_carrying_item)
-			#item.global_position = player.node_carrying_item.global_position
-			player.carried_item = item # set the player's carried item to the current item
-			item.z_index = 0
+			if item is Potato and item.chopped:
+				item.queue_free()
+				item = item.potato_fries.instantiate()
+				player.node_carrying_item.add_child(item)
+				player.carried_item = item
+				item.z_index = 0
+				item = null
+				
+			else:
+				item.reparent(player.node_carrying_item)
+				#item.global_position = player.node_carrying_item.global_position
+				player.carried_item = item # set the player's carried item to the current item
+				item.z_index = 0
 			item = null # set the new item to null
 			timer.stop()
 			progress_bar.hide()
 			set_physics_process(false)
+			$PlayAudio.stop()
+		# Otherwise we swap both items
+		elif item and player.carried_item and player.carried_item is ChoppableItem and not player.carried_item.chopped:
+			var temp = player.carried_item
+			if item is Potato and item.chopped:
+				item.queue_free()
+				item = item.potato_fries.instantiate()
+				player.node_carrying_item.add_child(item)
+			
+			player.carried_item = item
+			item.z_index = 0
+			item.reparent(player.node_carrying_item)
+			
+			item = temp
+			item.reparent(node_holding_item)
+			item.global_position = node_holding_item.global_position
+			item.z_index = 1
+			start_chopping()
+		get_viewport().set_input_as_handled()
 
 
 func start_chopping() -> void:
 	timer.start()
+	$PlayAudio.start()
 	progress_bar.show()
 	set_physics_process(true)
 
 
 func _on_chop_timer_timeout():
 	item.chop()
+	#if temp_item != item:
+		#item.queue_free()
+		#item = temp_item
+		#node_holding_item.add_child(item)
+		##item.reparent(node_holding_item)
+		#item.global_position = node_holding_item.global_position
+		#print(item)
+		
 	progress_bar.hide()
+	$PlayAudio.stop()
+
+
+func _on_play_audio_timeout():
+	$AudioStreamPlayer2D.play()
+	$PlayAudio.start()

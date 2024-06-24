@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://vcmjlfyjqij6"]
+
+[ext_resource type="PackedScene" uid="uid://ci706wx7j538n" path="res://scenes/items/fillable_item.tscn" id="1_m63e3"]
+[ext_resource type="Texture2D" uid="uid://bp1a2412216rn" path="res://sprites/drink/drink_unfilled.png" id="2_rthme"]
+[ext_resource type="Texture2D" uid="uid://bfeh1hsp5tubl" path="res://sprites/drink/drink_filled.png" id="3_suyas"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6dps0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_rthme")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_suyas")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Soda" instance=ExtResource("1_m63e3")]
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+sprite_frames = SubResource("SpriteFrames_6dps0")

@@ -18,11 +18,13 @@ class_name CookingStation
 @export var animation_name:String
 @export var animation_player:AnimationPlayer
 
+@export var accepts_item_name:String
+
 
 func _update_progress_bar() -> void:
 	progress_bar.value = timer.wait_time - timer.time_left
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	_update_progress_bar()
 
 # The current item that is on the grill
@@ -42,7 +44,16 @@ func _ready() -> void:
 	
 	if animation_name:
 		animation_player.play(animation_name)
-	#$AnimationPlayer.play("glow")
+	
+	interaction_component.player_entered.connect(_animate_shine)
+	interaction_component.player_exited.connect(_stop_shine)
+
+
+func _animate_shine(_body):
+	$AnimationPlayer.play("shimmer")
+
+func _stop_shine(_body):
+	$AnimationPlayer.play("RESET")
 	
 
 
@@ -50,14 +61,14 @@ func _player_entered(body:Player):
 	player = body
 	
 
-func _player_exited(body:Player):
+func _player_exited(_body:Player):
 	player = null
 	
 
-func _input(event) -> void:
+func _unhandled_input(_event) -> void:
 	if Input.is_action_just_pressed("interact_item") and player:
 		# if the grill does not have an item at the moment
-		if not item and player.carried_item and player.carried_item is CookableItem:
+		if not item and player.carried_item and player.carried_item is CookableItem and player.carried_item.item_name == accepts_item_name:
 			item = player.carried_item # set the item to the player's carried item
 			item.reparent(node_holding_item)
 			item.global_position = node_holding_item.global_position
@@ -73,7 +84,24 @@ func _input(event) -> void:
 			#player.carried_item = item # set the player's carried item to the current item
 			item = null # set the new item to null
 			stop_grilling()
+		elif item and player.carried_item and player.carried_item is CookableItem and player.carried_item.item_name == accepts_item_name:
+			var temp = player.carried_item
+			player.carried_item = item
+			item.reparent(player.node_carrying_item)
+			item.z_index = 0
 			
+			item = temp
+			temp.reparent(node_holding_item)
+			item.z_index = 1
+			item.global_position = node_holding_item.global_position
+			start_grilling()
+		elif item and player.carried_item and player.carried_item is Plate:
+			if player.carried_item.check_add_item(item):
+				player.carried_item.add_item(item)
+				item = null
+				stop_grilling()
+		
+		get_viewport().set_input_as_handled()
 
 
 func start_grilling() -> void:
@@ -81,11 +109,13 @@ func start_grilling() -> void:
 	progress_bar.show()
 	progress_bar.value = 0
 	set_physics_process(true)
+	$AudioStreamPlayer2D.play()
 
 func stop_grilling() -> void:
 	timer.stop()
 	progress_bar.hide()
 	set_physics_process(false)
+	$AudioStreamPlayer2D.stop()
 
 
 func _on_cook_timer_timeout():

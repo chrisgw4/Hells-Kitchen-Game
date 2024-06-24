@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://dm4nnrgby6cp7"]
+
+[node name="ControlScreen" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 270.0
+offset_bottom = 104.0
+color = Color(0.141176, 0.141176, 0.141176, 0.807843)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = 19.0
+offset_top = 14.0
+offset_right = 304.0
+offset_bottom = 113.0
+text = "Interact: \"E\"
+Pause/Unpause: \"ESC\" or \"P\"
+Move:  \"WASD\" or Arrow keys"

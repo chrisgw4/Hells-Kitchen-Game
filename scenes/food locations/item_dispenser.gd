@@ -20,21 +20,30 @@ func _ready() -> void:
 	interaction_component.player_entered.connect(_player_entered)
 	interaction_component.player_exited.connect(_player_exited)
 	make_item()
+	interaction_component.player_entered.connect(_animate_shine)
+	interaction_component.player_exited.connect(_stop_shine)
+
+
+func _animate_shine(_body):
+	$AnimationPlayer.play("shimmer")
+
+func _stop_shine(_body):
+	$AnimationPlayer.play("RESET")
 
 
 func _player_entered(body:Player):
 	player = body
 	
 
-func _player_exited(body:Player):
+func _player_exited(_body:Player):
 	player = null
 
 func make_item() -> void:
 	item = item_type.instantiate()
-	add_child(item)
+	node_holding_item.add_child(item)
 	item.global_position = node_holding_item.global_position
 
-func _input(event) -> void:
+func _unhandled_input(_event) -> void:
 	if Input.is_action_just_pressed("interact_item") and player:
 		# if the grill does not have an item at the moment
 		#if not item:

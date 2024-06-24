@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://ml7kay0wvnwe"]
+
+[ext_resource type="PackedScene" uid="uid://dkkisy1p3a080" path="res://scenes/items/choppable_item.tscn" id="1_qglrc"]
+[ext_resource type="Script" path="res://scenes/items/choppable_items/potato.gd" id="2_1mn8f"]
+[ext_resource type="Texture2D" uid="uid://82qkgjsenqfi" path="res://sprites/fries/potato.png" id="2_syf8j"]
+[ext_resource type="Texture2D" uid="uid://dav6jpreibqxx" path="res://sprites/fries/fries.png" id="3_0xlk5"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_i0ljk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_syf8j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_0xlk5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Potato" instance=ExtResource("1_qglrc")]
+script = ExtResource("2_1mn8f")
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+scale = Vector2(0.75, 0.75)
+sprite_frames = SubResource("SpriteFrames_i0ljk")

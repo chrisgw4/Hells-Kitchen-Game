@@ -35,12 +35,13 @@ func _player_entered(body:Player):
 	player = body
 	
 
-func _player_exited(body:Player):
+func _player_exited(_body:Player):
 	player = null
 	
 
-func _input(event) -> void:
+func _unhandled_input(_event) -> void:
 	if Input.is_action_just_pressed("interact_item") and player and can_place_plates_on and player.can_player_place:
+		print('real')
 		# if the grill does not have an item at the moment
 		if not item and player.carried_item is Plate:
 			item = player.carried_item # set the item to the player's carried item
@@ -48,6 +49,7 @@ func _input(event) -> void:
 			item.reparent(node_holding_item)
 			item.global_position = node_holding_item.global_position
 			item.z_index = 1
+			#get_viewport().set_input_as_handled()
 			
 		elif item and player.carried_item == null:
 			player.carried_item = item # set the player's carried item to the current item
@@ -55,6 +57,7 @@ func _input(event) -> void:
 			#item.global_position = player.node_carrying_item.global_position
 			item.z_index = 0
 			item = null # set the new item to null
+
 
 
 

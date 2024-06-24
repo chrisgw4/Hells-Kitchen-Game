@@ -59,6 +59,6 @@ func move() -> void:
 	parent.move_and_slide()
 
 
-func _process(delta):
+func _process(_delta):
 	move()
 	

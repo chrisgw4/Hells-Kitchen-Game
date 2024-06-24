@@ -1,9 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://dds2bvo4q55rs"]
+[gd_scene load_steps=4 format=3 uid="uid://dds2bvo4q55rs"]
 
 [ext_resource type="Texture2D" uid="uid://bw8c3w1rllysj" path="res://sprites/bread/bread.png" id="1_7s4ct"]
+[ext_resource type="Script" path="res://scenes/UI/customer_order.gd" id="1_8cvql"]
 [ext_resource type="Texture2D" uid="uid://c68tvrn3fbmub" path="res://sprites/lettuce/lettuce_chopped.png" id="2_ijp72"]
 
-[node name="CustomerOrder" type="Control"]
+[node name="CustomerOrder" type="Control" node_paths=PackedStringArray("npc_sprite", "order_sprite")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -11,6 +12,9 @@ anchor_bottom = 1.0
 offset_right = -580.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_8cvql")
+npc_sprite = NodePath("NPC")
+order_sprite = NodePath("OrderIcon")
 
 [node name="NPC" type="Sprite2D" parent="."]
 texture_filter = 1

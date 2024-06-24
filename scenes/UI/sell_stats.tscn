@@ -1,0 +1,46 @@
+[gd_scene load_steps=3 format=3 uid="uid://b6isata4vpx3r"]
+
+[ext_resource type="Texture2D" uid="uid://d4grptaydrlx0" path="res://sprites/burger/burger_complete.png" id="1_lq10e"]
+[ext_resource type="Script" path="res://scenes/UI/sell_stats.gd" id="1_tnjcl"]
+
+[node name="SellStats" type="FlowContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -490.0
+offset_bottom = -286.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_tnjcl")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(26, 13)
+layout_mode = 2
+color = Color(0.196078, 0.196078, 0.196078, 0.607843)
+
+[node name="Sprite2D" type="Sprite2D" parent="ColorRect"]
+position = Vector2(13, 14)
+scale = Vector2(2, 2)
+texture = ExtResource("1_lq10e")
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(78, 23)
+layout_mode = 2
+color = Color(0.196078, 0.196078, 0.196078, 0.607843)
+
+[node name="Points" type="RichTextLabel" parent="ColorRect2"]
+layout_mode = 0
+offset_right = 95.0
+offset_bottom = 24.0
+text = "Points: "
+
+[node name="ColorRect3" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(110, 23)
+layout_mode = 2
+color = Color(0.196078, 0.196078, 0.196078, 0.607843)
+
+[node name="BonusType" type="RichTextLabel" parent="ColorRect3"]
+layout_mode = 0
+offset_right = 119.0
+offset_bottom = 25.0
+text = "Bonus Type: "

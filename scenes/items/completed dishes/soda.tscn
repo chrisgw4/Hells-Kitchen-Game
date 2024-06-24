@@ -1,7 +1,23 @@
-[gd_scene load_steps=2 format=3 uid="uid://dny063vm3w6rq"]
+[gd_scene load_steps=4 format=3 uid="uid://dny063vm3w6rq"]
 
 [ext_resource type="PackedScene" uid="uid://bpsbe6a1l80bn" path="res://scenes/items/completed dishes/completed_dish.tscn" id="1_hm3rp"]
+[ext_resource type="Texture2D" uid="uid://bfeh1hsp5tubl" path="res://sprites/drink/drink_filled.png" id="2_o6bbf"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fcho7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_o6bbf")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Soda" instance=ExtResource("1_hm3rp")]
 ingredients = Array[String](["Soda"])
 item_name = "Soda"
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+scale = Vector2(0.75, 0.75)
+sprite_frames = SubResource("SpriteFrames_fcho7")

@@ -1,0 +1,155 @@
+[gd_scene load_steps=12 format=3 uid="uid://dd46yt36lpc8r"]
+
+[ext_resource type="Script" path="res://scenes/main_menu.gd" id="1_cv00y"]
+[ext_resource type="Texture2D" uid="uid://c1cp52rmidfsr" path="res://sprites/tablecloth.png" id="2_4bh4d"]
+[ext_resource type="Texture2D" uid="uid://70nssnoc1dqu" path="res://sprites/pixelated-background-with-red-shades.jpg" id="2_ipho4"]
+[ext_resource type="Texture2D" uid="uid://du2icshferr5r" path="res://sprites/hells_kitchen_revamped.png" id="3_e1q0r"]
+[ext_resource type="FontFile" uid="uid://n3pfdv8ywpnq" path="res://sprites/dogicapixel.ttf" id="3_luhb0"]
+[ext_resource type="AudioStream" uid="uid://c8bdxpulp7jhd" path="res://audio/knife-cut-veggies-foley-2-211702.wav" id="3_xfc5p"]
+[ext_resource type="PackedScene" uid="uid://7edw60qyc836" path="res://scenes/help_screen.tscn" id="4_a7q88"]
+[ext_resource type="AudioStream" uid="uid://brmsupc5am3k7" path="res://audio/food-show-163665.wav" id="5_gdusj"]
+[ext_resource type="PackedScene" uid="uid://dm4nnrgby6cp7" path="res://scenes/UI/control_screen.tscn" id="6_cljh8"]
+[ext_resource type="PackedScene" uid="uid://d1u2doh4vphjk" path="res://scenes/UI/gameplay_help.tscn" id="7_r2sto"]
+[ext_resource type="AudioStream" uid="uid://bx1obh3jvis6g" path="res://audio/button-124476.wav" id="8_yxfxm"]
+
+[node name="MainMenu" type="Node2D"]
+script = ExtResource("1_cv00y")
+
+[node name="Pixelated-background-with-red-shades" type="Sprite2D" parent="."]
+modulate = Color(0.537011, 0.537011, 0.537011, 1)
+position = Vector2(320, 181)
+scale = Vector2(0.143083, 0.143083)
+texture = ExtResource("2_ipho4")
+
+[node name="Background" type="Sprite2D" parent="."]
+
+[node name="HellsKitchen" type="Sprite2D" parent="."]
+position = Vector2(308, 73)
+scale = Vector2(0.263142, 0.263142)
+texture = ExtResource("3_e1q0r")
+
+[node name="Music Volume" type="HSlider" parent="."]
+offset_left = 98.0
+offset_top = 225.0
+offset_right = 516.0
+offset_bottom = 241.0
+max_value = 1.0
+step = 0.001
+value = 0.5
+
+[node name="SFX Volume" type="HSlider" parent="."]
+offset_left = 98.0
+offset_top = 295.0
+offset_right = 516.0
+offset_bottom = 311.0
+max_value = 1.0
+step = 0.001
+value = 0.5
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+
+[node name="Music Label" type="RichTextLabel" parent="."]
+offset_left = 271.0
+offset_top = 205.0
+offset_right = 348.0
+offset_bottom = 245.0
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("3_luhb0")
+text = "Music"
+
+[node name="SFX Label" type="RichTextLabel" parent="."]
+offset_left = 225.0
+offset_top = 272.0
+offset_right = 428.0
+offset_bottom = 312.0
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("3_luhb0")
+text = "Sound Effects"
+
+[node name="Logo" type="Sprite2D" parent="."]
+
+[node name="TextureButton" type="TextureButton" parent="."]
+texture_filter = 1
+offset_left = 380.0
+offset_top = 128.0
+offset_right = 451.0
+offset_bottom = 272.0
+rotation = 1.5708
+texture_normal = ExtResource("2_4bh4d")
+stretch_mode = 4
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TextureButton"]
+layout_mode = 0
+offset_left = 28.0
+offset_top = 105.0
+offset_right = 100.0
+offset_bottom = 120.0
+rotation = -1.5708
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("3_luhb0")
+text = "Start"
+
+[node name="TestSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_xfc5p")
+volume_db = -5.0
+bus = &"Sound Effects"
+
+[node name="Button" type="Button" parent="."]
+offset_left = 460.0
+offset_top = 318.0
+offset_right = 562.0
+offset_bottom = 349.0
+theme_override_fonts/font = ExtResource("3_luhb0")
+text = "Recipes"
+
+[node name="HelpScreen" parent="." instance=ExtResource("4_a7q88")]
+visible = false
+position = Vector2(258, 117)
+scale = Vector2(0.6, 0.6)
+
+[node name="Music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_gdusj")
+volume_db = -15.0
+autoplay = true
+bus = &"Music"
+
+[node name="Controls" type="Button" parent="."]
+offset_left = 22.0
+offset_top = 318.0
+offset_right = 184.0
+offset_bottom = 349.0
+theme_override_fonts/font = ExtResource("3_luhb0")
+text = "See Controls"
+
+[node name="ControlScreen" parent="." instance=ExtResource("6_cljh8")]
+visible = false
+position = Vector2(9, 231)
+scale = Vector2(0.7, 0.7)
+
+[node name="GameplayHelp" type="Button" parent="."]
+offset_left = 225.0
+offset_top = 318.0
+offset_right = 403.0
+offset_bottom = 349.0
+theme_override_fonts/font = ExtResource("3_luhb0")
+text = "Gameplay Help"
+
+[node name="GameplayHelp2" parent="." instance=ExtResource("7_r2sto")]
+visible = false
+position = Vector2(167, 131)
+scale = Vector2(0.5, 0.5)
+
+[node name="Button2" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_yxfxm")
+volume_db = -5.0
+
+[connection signal="value_changed" from="Music Volume" to="." method="_on_music_volume_value_changed"]
+[connection signal="drag_ended" from="SFX Volume" to="." method="_on_sfx_volume_drag_ended"]
+[connection signal="value_changed" from="SFX Volume" to="." method="_on_sfx_volume_value_changed"]
+[connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]
+[connection signal="mouse_entered" from="Button" to="." method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="Button" to="." method="_on_button_mouse_exited"]
+[connection signal="mouse_entered" from="Controls" to="." method="_on_controls_mouse_entered"]
+[connection signal="mouse_exited" from="Controls" to="." method="_on_controls_mouse_exited"]
+[connection signal="mouse_entered" from="GameplayHelp" to="." method="_on_gameplay_help_mouse_entered"]
+[connection signal="mouse_exited" from="GameplayHelp" to="." method="_on_gameplay_help_mouse_exited"]

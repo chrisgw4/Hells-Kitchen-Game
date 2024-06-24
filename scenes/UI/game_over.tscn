@@ -1,0 +1,159 @@
+[gd_scene load_steps=9 format=3 uid="uid://j5u5a3jkrq64"]
+
+[ext_resource type="PackedScene" uid="uid://b10pmelc845pr" path="res://scenes/UI/slider_of_hell.tscn" id="1_0f5ce"]
+[ext_resource type="Script" path="res://scenes/UI/game_over.gd" id="1_str3n"]
+[ext_resource type="Texture2D" uid="uid://da8vkq2f3lwl2" path="res://sprites/gordon_ramsey_devil.png" id="3_rqn4w"]
+[ext_resource type="FontFile" uid="uid://n3pfdv8ywpnq" path="res://sprites/dogicapixel.ttf" id="4_8rbxm"]
+[ext_resource type="Texture2D" uid="uid://bgrjmwi1joeej" path="res://sprites/fries/fries_completed.png" id="5_nscu5"]
+[ext_resource type="Texture2D" uid="uid://d4grptaydrlx0" path="res://sprites/burger/burger_complete.png" id="6_d3t6g"]
+[ext_resource type="Texture2D" uid="uid://bfeh1hsp5tubl" path="res://sprites/drink/drink_filled.png" id="7_q1456"]
+[ext_resource type="AudioStream" uid="uid://6f5j3msg6b6q" path="res://audio/hotel-bell-ding-1-174457.wav" id="8_xrdpa"]
+
+[node name="GameOver" type="Control" node_paths=PackedStringArray("slider_of_hell", "rich_text", "text_label")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_str3n")
+slider_of_hell = NodePath("SliderOfHell")
+rich_text = NodePath("RichTextLabel")
+text_label = NodePath("GordonDevilLabel")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 640.0
+offset_bottom = 360.0
+color = Color(0.147672, 0.147672, 0.147672, 0.843137)
+
+[node name="SliderOfHell" parent="." instance=ExtResource("1_0f5ce")]
+layout_mode = 1
+offset_left = 508.0
+offset_top = 32.0
+offset_right = 508.0
+offset_bottom = 32.0
+time = 1.5
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 84.0
+offset_top = 145.0
+offset_right = 308.0
+offset_bottom = 169.0
+theme_override_fonts/normal_font = ExtResource("4_8rbxm")
+text = "Your total score:"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(60, 306)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("3_rqn4w")
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 120.0
+offset_top = 261.0
+offset_right = 517.0
+offset_bottom = 364.0
+color = Color(0.443403, 0.145237, 0.119451, 1)
+
+[node name="GordonDevilLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 126.0
+offset_top = 267.0
+offset_right = 1098.0
+offset_bottom = 500.0
+scale = Vector2(0.4, 0.4)
+theme_override_constants/line_spacing = 15
+theme_override_fonts/font = ExtResource("4_8rbxm")
+theme_override_font_sizes/font_size = 32
+text = "Hello I am Gordon Devil"
+autowrap_mode = 2
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 5.0
+offset_right = 396.0
+offset_bottom = 65.0
+theme_override_constants/line_separation = 5
+theme_override_fonts/normal_font = ExtResource("4_8rbxm")
+text = "Thank you to the playtesters: 
+- Endermenace
+- NikoD45"
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 246.0
+offset_top = 183.0
+offset_right = 459.0
+offset_bottom = 231.0
+theme_override_fonts/normal_font = ExtResource("4_8rbxm")
+theme_override_font_sizes/normal_font_size = 48
+text = "632"
+
+[node name="FriesCompleted" type="Sprite2D" parent="."]
+position = Vector2(23, 87)
+scale = Vector2(2, 2)
+texture = ExtResource("5_nscu5")
+
+[node name="BurgerComplete" type="Sprite2D" parent="."]
+position = Vector2(23, 111)
+scale = Vector2(2, 2)
+texture = ExtResource("6_d3t6g")
+
+[node name="DrinkFilled" type="Sprite2D" parent="."]
+position = Vector2(23, 132)
+scale = Vector2(2, 2)
+texture = ExtResource("7_q1456")
+
+[node name="TotalFries" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 39.0
+offset_top = 79.0
+offset_right = 79.0
+offset_bottom = 119.0
+theme_override_fonts/normal_font = ExtResource("4_8rbxm")
+text = "12"
+
+[node name="TotalBurgers" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 39.0
+offset_top = 103.0
+offset_right = 79.0
+offset_bottom = 143.0
+theme_override_fonts/normal_font = ExtResource("4_8rbxm")
+text = "12"
+
+[node name="TotalSodas" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 125.0
+offset_right = 80.0
+offset_bottom = 165.0
+theme_override_fonts/normal_font = ExtResource("4_8rbxm")
+text = "12"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 0
+offset_left = 400.0
+offset_top = 50.0
+offset_right = 579.0
+offset_bottom = 210.0
+scale = Vector2(0.6, 0.6)
+follow_focus = true
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
+
+[node name="VFlowContainer" type="FlowContainer" parent="ScrollContainer"]
+custom_minimum_size = Vector2(175, 1e+06)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Bell" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_xrdpa")
+volume_db = -15.0
+bus = &"Sound Effects"

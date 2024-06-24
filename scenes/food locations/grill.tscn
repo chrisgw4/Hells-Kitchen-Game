@@ -1,17 +1,8 @@
 [gd_scene load_steps=13 format=3 uid="uid://cpvsvsal71hcy"]
 
 [ext_resource type="PackedScene" uid="uid://b7tw5uf7y37wj" path="res://scenes/food locations/cooking_station.tscn" id="1_e17rx"]
-[ext_resource type="Shader" path="res://scenes/food locations/grill.gdshader" id="2_8b48r"]
 [ext_resource type="Texture2D" uid="uid://dputi7y7rmdmq" path="res://sprites/grill (1).png" id="2_xtp41"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_qjbgv"]
-shader = ExtResource("2_8b48r")
-shader_parameter/color1 = Color(0.882353, 0.305882, 0.00784314, 1)
-shader_parameter/color2 = Color(0.972549, 0.784314, 0.027451, 1)
-shader_parameter/threshold = 0.59
-shader_parameter/intensity = 1.95
-shader_parameter/opacity = 0.3
-shader_parameter/glow_color = Color(0.851815, 0, 0.171877, 1)
+[ext_resource type="AudioStream" uid="uid://d4ek58q4si6gd" path="res://audio/sizzling-sausage-30955.wav" id="4_scmfr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5by8v"]
 atlas = ExtResource("2_xtp41")
@@ -43,29 +34,62 @@ size = Vector2(22, 19)
 
 [sub_resource type="Animation" id="Animation_hobtp"]
 length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_odhqt"]
 resource_name = "glow"
 loop_mode = 1
 
+[sub_resource type="Animation" id="Animation_r8dyy"]
+resource_name = "shimmer"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1.5, 1.5, 1.5, 1), Color(1, 1, 1, 1)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_eskgi"]
 _data = {
 "RESET": SubResource("Animation_hobtp"),
-"glow": SubResource("Animation_odhqt")
+"glow": SubResource("Animation_odhqt"),
+"shimmer": SubResource("Animation_r8dyy")
 }
 
 [node name="Grill" node_paths=PackedStringArray("animated_sprite", "animation_player") instance=ExtResource("1_e17rx")]
 animated_sprite = NodePath("AnimatedSprite2D")
 animation_player = NodePath("AnimationPlayer")
+accepts_item_name = "BurgerPatty"
 
 [node name="AnimatedSprite2D" parent="." index="1"]
 texture_filter = 1
-material = SubResource("ShaderMaterial_qjbgv")
 sprite_frames = SubResource("SpriteFrames_xmlvm")
 
 [node name="CollisionShape2D" parent="InteractionComponent" index="0"]
 position = Vector2(-18, 0)
 shape = SubResource("RectangleShape2D_btbrq")
+
+[node name="CookTimer" parent="." index="3"]
+wait_time = 9.0
 
 [node name="TextureProgressBar" parent="." index="4"]
 offset_left = -3.0
@@ -82,3 +106,8 @@ shape = SubResource("RectangleShape2D_kp84o")
 libraries = {
 "": SubResource("AnimationLibrary_eskgi")
 }
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." index="7"]
+stream = ExtResource("4_scmfr")
+volume_db = -5.0
+bus = &"Sound Effects"

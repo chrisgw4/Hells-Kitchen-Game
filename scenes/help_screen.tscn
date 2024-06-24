@@ -1,0 +1,391 @@
+[gd_scene load_steps=18 format=3 uid="uid://7edw60qyc836"]
+
+[ext_resource type="Texture2D" uid="uid://c3b08q6mxro73" path="res://sprites/bread/cut_bread.png" id="1_ywuhi"]
+[ext_resource type="Texture2D" uid="uid://c68tvrn3fbmub" path="res://sprites/lettuce/lettuce_chopped.png" id="2_d8v53"]
+[ext_resource type="Texture2D" uid="uid://cmr8oblm0q4d0" path="res://sprites/patties/patty-02.png" id="3_sva2b"]
+[ext_resource type="Texture2D" uid="uid://d4grptaydrlx0" path="res://sprites/burger/burger_complete.png" id="4_25o0x"]
+[ext_resource type="Texture2D" uid="uid://sk4dimjmr30n" path="res://sprites/plate.png" id="4_son3x"]
+[ext_resource type="Texture2D" uid="uid://bw8c3w1rllysj" path="res://sprites/bread/bread.png" id="6_a2ho8"]
+[ext_resource type="Texture2D" uid="uid://cd8y24d72nssv" path="res://sprites/lettuce/lettuce_unchopped.png" id="6_fpjs2"]
+[ext_resource type="Texture2D" uid="uid://tk7q20eaf4c2" path="res://sprites/chopping_board.png" id="7_k3epy"]
+[ext_resource type="Texture2D" uid="uid://bfeh1hsp5tubl" path="res://sprites/drink/drink_filled.png" id="7_pmxwn"]
+[ext_resource type="Texture2D" uid="uid://82qkgjsenqfi" path="res://sprites/fries/potato.png" id="9_vslgh"]
+[ext_resource type="Texture2D" uid="uid://dav6jpreibqxx" path="res://sprites/fries/fries.png" id="10_kgle3"]
+[ext_resource type="Texture2D" uid="uid://ccueddlu0usuw" path="res://sprites/lava_fryer/lava_fryer_1.png" id="11_i3xhs"]
+[ext_resource type="Texture2D" uid="uid://bgrjmwi1joeej" path="res://sprites/fries/fries_completed.png" id="12_c6i27"]
+[ext_resource type="Texture2D" uid="uid://dputi7y7rmdmq" path="res://sprites/grill (1).png" id="14_cvjt1"]
+[ext_resource type="Texture2D" uid="uid://wjo7fsy15oak" path="res://sprites/patties/patty-01.png" id="15_osiqt"]
+[ext_resource type="Texture2D" uid="uid://dj83jjmn81m2x" path="res://sprites/drink_machine.png" id="16_quuds"]
+[ext_resource type="Texture2D" uid="uid://bp1a2412216rn" path="res://sprites/drink/drink_unfilled.png" id="17_gsshy"]
+
+[node name="HelpScreen" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 586.0
+offset_bottom = 314.0
+color = Color(0.141176, 0.141176, 0.141176, 0.807843)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = 36.0
+offset_top = 13.0
+offset_right = 76.0
+offset_bottom = 53.0
+theme_override_font_sizes/normal_font_size = 24
+text = "+"
+
+[node name="RichTextLabel17" type="RichTextLabel" parent="."]
+offset_left = 36.0
+offset_top = 37.0
+offset_right = 76.0
+offset_bottom = 77.0
+theme_override_font_sizes/normal_font_size = 24
+text = "+"
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="."]
+offset_left = 92.0
+offset_top = 13.0
+offset_right = 132.0
+offset_bottom = 53.0
+theme_override_font_sizes/normal_font_size = 24
+text = "+"
+
+[node name="RichTextLabel5" type="RichTextLabel" parent="."]
+offset_left = 136.0
+offset_top = 13.0
+offset_right = 176.0
+offset_bottom = 53.0
+theme_override_font_sizes/normal_font_size = 24
+text = "+"
+
+[node name="RichTextLabel19" type="RichTextLabel" parent="."]
+offset_left = 36.0
+offset_top = 68.0
+offset_right = 76.0
+offset_bottom = 108.0
+theme_override_font_sizes/normal_font_size = 24
+text = "+"
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="."]
+offset_left = 184.0
+offset_top = 13.0
+offset_right = 224.0
+offset_bottom = 53.0
+theme_override_font_sizes/normal_font_size = 24
+text = "="
+
+[node name="RichTextLabel15" type="RichTextLabel" parent="."]
+offset_left = 93.0
+offset_top = 36.0
+offset_right = 133.0
+offset_bottom = 76.0
+theme_override_font_sizes/normal_font_size = 24
+text = "="
+
+[node name="RichTextLabel16" type="RichTextLabel" parent="."]
+offset_left = 94.0
+offset_top = 68.0
+offset_right = 134.0
+offset_bottom = 108.0
+theme_override_font_sizes/normal_font_size = 24
+text = "="
+
+[node name="Burger" type="Node2D" parent="."]
+position = Vector2(-9, 0)
+scale = Vector2(2, 2)
+
+[node name="Sprite2D" type="Sprite2D" parent="Burger"]
+texture_filter = 1
+position = Vector2(17, 15)
+texture = ExtResource("1_ywuhi")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Burger"]
+texture_filter = 1
+position = Vector2(40, 15)
+texture = ExtResource("2_d8v53")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Burger"]
+texture_filter = 1
+position = Vector2(66, 15)
+texture = ExtResource("3_sva2b")
+
+[node name="Sprite2D5" type="Sprite2D" parent="Burger"]
+texture_filter = 1
+position = Vector2(87, 15.5)
+texture = ExtResource("4_son3x")
+
+[node name="Sprite2D7" type="Sprite2D" parent="Burger"]
+texture_filter = 1
+position = Vector2(40, 27.5)
+texture = ExtResource("4_son3x")
+
+[node name="Sprite2D8" type="Sprite2D" parent="Burger"]
+texture_filter = 1
+position = Vector2(40, 43)
+texture = ExtResource("4_son3x")
+
+[node name="Sprite2D10" type="Sprite2D" parent="Burger"]
+texture_filter = 1
+position = Vector2(66.5, 43)
+texture = ExtResource("4_son3x")
+
+[node name="Sprite2D6" type="Sprite2D" parent="Burger"]
+texture_filter = 1
+position = Vector2(111, 16.5)
+texture = ExtResource("4_son3x")
+
+[node name="Sprite2D9" type="Sprite2D" parent="Burger"]
+texture_filter = 1
+position = Vector2(66.5, 28.5)
+texture = ExtResource("4_son3x")
+
+[node name="Sprite2D4" type="Sprite2D" parent="Burger"]
+texture_filter = 1
+position = Vector2(111, 14.5)
+texture = ExtResource("4_25o0x")
+
+[node name="FriesCompleted" type="Sprite2D" parent="Burger"]
+position = Vector2(17, 28)
+texture = ExtResource("12_c6i27")
+
+[node name="FriesCompleted2" type="Sprite2D" parent="Burger"]
+position = Vector2(66.5, 26)
+texture = ExtResource("12_c6i27")
+
+[node name="DrinkFilled" type="Sprite2D" parent="Burger"]
+position = Vector2(17, 42)
+texture = ExtResource("7_pmxwn")
+
+[node name="DrinkFilled2" type="Sprite2D" parent="Burger"]
+position = Vector2(66.5, 39)
+texture = ExtResource("7_pmxwn")
+
+[node name="RichTextLabel4" type="RichTextLabel" parent="."]
+offset_left = 11.0
+offset_top = 97.0
+offset_right = 226.0
+offset_bottom = 185.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+text = "Every requested Item must be put on a Plate for it to be accepted."
+
+[node name="RichTextLabel18" type="RichTextLabel" parent="."]
+offset_left = 6.0
+offset_top = 201.0
+offset_right = 195.0
+offset_bottom = 296.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+text = "Some items need to be fried in lava. Fry once for a devilishly delightful flavor."
+
+[node name="RichTextLabel6" type="RichTextLabel" parent="."]
+offset_left = 315.0
+offset_top = 100.0
+offset_right = 547.0
+offset_bottom = 194.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+text = "You must also remain near the cutting board in order for it to chop the desired food."
+
+[node name="RichTextLabel25" type="RichTextLabel" parent="."]
+offset_left = 411.0
+offset_top = 216.0
+offset_right = 578.0
+offset_bottom = 291.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+text = "Even devils need a refreshing soda once in a while."
+
+[node name="RichTextLabel22" type="RichTextLabel" parent="."]
+offset_left = 199.0
+offset_top = 203.0
+offset_right = 398.0
+offset_bottom = 300.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+text = "And remember you can't serve a raw or burnt patty, even in hell. Cook it once and you're good"
+
+[node name="RichTextLabel7" type="RichTextLabel" parent="."]
+offset_left = 351.0
+offset_top = 16.0
+offset_right = 391.0
+offset_bottom = 56.0
+theme_override_font_sizes/normal_font_size = 24
+text = "+"
+
+[node name="RichTextLabel8" type="RichTextLabel" parent="."]
+offset_left = 354.0
+offset_top = 43.0
+offset_right = 394.0
+offset_bottom = 83.0
+theme_override_font_sizes/normal_font_size = 24
+text = "+"
+
+[node name="RichTextLabel20" type="RichTextLabel" parent="."]
+offset_left = 248.0
+offset_top = 174.0
+offset_right = 288.0
+offset_bottom = 214.0
+theme_override_font_sizes/normal_font_size = 24
+text = "+"
+
+[node name="RichTextLabel11" type="RichTextLabel" parent="."]
+offset_left = 354.0
+offset_top = 71.0
+offset_right = 394.0
+offset_bottom = 111.0
+theme_override_font_sizes/normal_font_size = 24
+text = "+"
+
+[node name="RichTextLabel23" type="RichTextLabel" parent="."]
+offset_left = 442.0
+offset_top = 187.0
+offset_right = 482.0
+offset_bottom = 227.0
+theme_override_font_sizes/normal_font_size = 24
+text = "+"
+
+[node name="RichTextLabel14" type="RichTextLabel" parent="."]
+offset_left = 50.0
+offset_top = 170.0
+offset_right = 90.0
+offset_bottom = 210.0
+theme_override_font_sizes/normal_font_size = 24
+text = "+"
+
+[node name="RichTextLabel9" type="RichTextLabel" parent="."]
+offset_left = 436.0
+offset_top = 16.0
+offset_right = 476.0
+offset_bottom = 56.0
+theme_override_font_sizes/normal_font_size = 24
+text = "="
+
+[node name="RichTextLabel24" type="RichTextLabel" parent="."]
+offset_left = 498.0
+offset_top = 187.0
+offset_right = 538.0
+offset_bottom = 227.0
+theme_override_font_sizes/normal_font_size = 24
+text = "="
+
+[node name="RichTextLabel13" type="RichTextLabel" parent="."]
+offset_left = 105.0
+offset_top = 170.0
+offset_right = 145.0
+offset_bottom = 210.0
+theme_override_font_sizes/normal_font_size = 24
+text = "="
+
+[node name="RichTextLabel10" type="RichTextLabel" parent="."]
+offset_left = 436.0
+offset_top = 44.0
+offset_right = 476.0
+offset_bottom = 84.0
+theme_override_font_sizes/normal_font_size = 24
+text = "="
+
+[node name="RichTextLabel21" type="RichTextLabel" parent="."]
+offset_left = 329.0
+offset_top = 174.0
+offset_right = 369.0
+offset_bottom = 214.0
+theme_override_font_sizes/normal_font_size = 24
+text = "="
+
+[node name="RichTextLabel12" type="RichTextLabel" parent="."]
+offset_left = 436.0
+offset_top = 69.0
+offset_right = 476.0
+offset_bottom = 109.0
+theme_override_font_sizes/normal_font_size = 24
+text = "="
+
+[node name="Lettuce_Bread" type="Node2D" parent="."]
+position = Vector2(19, -1)
+scale = Vector2(2, 2)
+
+[node name="CutBread" type="Sprite2D" parent="Lettuce_Bread"]
+position = Vector2(223.5, 32)
+texture = ExtResource("1_ywuhi")
+
+[node name="Bread" type="Sprite2D" parent="Lettuce_Bread"]
+position = Vector2(160, 31)
+texture = ExtResource("6_a2ho8")
+
+[node name="LettuceUnchopped" type="Sprite2D" parent="Lettuce_Bread"]
+texture_filter = 1
+position = Vector2(160.5, 17.5)
+texture = ExtResource("6_fpjs2")
+
+[node name="LettuceChopped" type="Sprite2D" parent="Lettuce_Bread"]
+texture_filter = 1
+position = Vector2(224.5, 17.5)
+texture = ExtResource("2_d8v53")
+
+[node name="ChoppingBoard" type="Sprite2D" parent="Lettuce_Bread"]
+position = Vector2(190.5, 17)
+texture = ExtResource("7_k3epy")
+
+[node name="ChoppingBoard2" type="Sprite2D" parent="Lettuce_Bread"]
+position = Vector2(191, 30.5)
+texture = ExtResource("7_k3epy")
+
+[node name="ChoppingBoard3" type="Sprite2D" parent="Lettuce_Bread"]
+position = Vector2(191, 44.5)
+texture = ExtResource("7_k3epy")
+
+[node name="Potato" type="Sprite2D" parent="Lettuce_Bread"]
+position = Vector2(160, 45.5)
+texture = ExtResource("9_vslgh")
+
+[node name="Fries" type="Sprite2D" parent="Lettuce_Bread"]
+position = Vector2(222.5, 45.5)
+texture = ExtResource("10_kgle3")
+
+[node name="Fries" type="Node2D" parent="."]
+scale = Vector2(2, 2)
+
+[node name="LavaFryer1" type="Sprite2D" parent="Fries"]
+position = Vector2(41.5, 93.5)
+texture = ExtResource("11_i3xhs")
+
+[node name="Fries2" type="Sprite2D" parent="Fries"]
+position = Vector2(19, 93.5)
+texture = ExtResource("10_kgle3")
+
+[node name="FriesCompleted" type="Sprite2D" parent="Fries"]
+position = Vector2(67.5, 94)
+texture = ExtResource("12_c6i27")
+
+[node name="Grilled" type="Node2D" parent="."]
+scale = Vector2(2, 2)
+
+[node name="Grill(1)" type="Sprite2D" parent="Grilled"]
+position = Vector2(147.5, 95.5)
+rotation = 1.5708
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("14_cvjt1")
+
+[node name="Patty-01" type="Sprite2D" parent="Grilled"]
+position = Vector2(116.5, 95.5)
+texture = ExtResource("15_osiqt")
+
+[node name="Patty-02" type="Sprite2D" parent="Grilled"]
+position = Vector2(178.5, 96)
+texture = ExtResource("3_sva2b")
+
+[node name="Drink" type="Node2D" parent="."]
+scale = Vector2(2, 2)
+
+[node name="DrinkMachine" type="Sprite2D" parent="Drink"]
+position = Vector2(238.5, 102)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("16_quuds")
+
+[node name="DrinkFilled3" type="Sprite2D" parent="Drink"]
+position = Vector2(264, 102.5)
+texture = ExtResource("7_pmxwn")
+
+[node name="DrinkUnfilled" type="Sprite2D" parent="Drink"]
+position = Vector2(215.5, 101.5)
+texture = ExtResource("17_gsshy")

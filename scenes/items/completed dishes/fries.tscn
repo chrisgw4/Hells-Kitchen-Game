@@ -1,7 +1,23 @@
-[gd_scene load_steps=2 format=3 uid="uid://lda3tnn2nvue"]
+[gd_scene load_steps=4 format=3 uid="uid://lda3tnn2nvue"]
 
 [ext_resource type="PackedScene" uid="uid://bpsbe6a1l80bn" path="res://scenes/items/completed dishes/completed_dish.tscn" id="1_eby62"]
+[ext_resource type="Texture2D" uid="uid://bgrjmwi1joeej" path="res://sprites/fries/fries_completed.png" id="2_jvn8m"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_h7s3i"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_jvn8m")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Fries" instance=ExtResource("1_eby62")]
 ingredients = Array[String](["Fries"])
 item_name = "Fries"
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+scale = Vector2(0.75, 0.75)
+sprite_frames = SubResource("SpriteFrames_h7s3i")

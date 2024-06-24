@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://bv7cavrm5w4kd"]
+
+[ext_resource type="PackedScene" uid="uid://cuwcqknqov3ve" path="res://scenes/items/cookable_item.tscn" id="1_df1jn"]
+[ext_resource type="Texture2D" uid="uid://dav6jpreibqxx" path="res://sprites/fries/fries.png" id="2_w4fmk"]
+[ext_resource type="Texture2D" uid="uid://bgrjmwi1joeej" path="res://sprites/fries/fries_completed.png" id="3_vdfcx"]
+[ext_resource type="Texture2D" uid="uid://ua50ohmd60br" path="res://sprites/fries/burnt_fries.png" id="4_gmpwu"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_07k2f"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_w4fmk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_vdfcx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_gmpwu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Fries" instance=ExtResource("1_df1jn")]
+item_name = "Fries"
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+sprite_frames = SubResource("SpriteFrames_07k2f")

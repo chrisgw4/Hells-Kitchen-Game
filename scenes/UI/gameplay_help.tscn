@@ -1,0 +1,200 @@
+[gd_scene load_steps=17 format=3 uid="uid://d1u2doh4vphjk"]
+
+[ext_resource type="Texture2D" uid="uid://dputi7y7rmdmq" path="res://sprites/grill (1).png" id="1_vp288"]
+[ext_resource type="Texture2D" uid="uid://wjo7fsy15oak" path="res://sprites/patties/patty-01.png" id="2_oo8jt"]
+[ext_resource type="Texture2D" uid="uid://cd8y24d72nssv" path="res://sprites/lettuce/lettuce_unchopped.png" id="3_4d7k2"]
+[ext_resource type="Texture2D" uid="uid://82qkgjsenqfi" path="res://sprites/fries/potato.png" id="4_krlyp"]
+[ext_resource type="Texture2D" uid="uid://bw8c3w1rllysj" path="res://sprites/bread/bread.png" id="5_grnei"]
+[ext_resource type="Texture2D" uid="uid://tk7q20eaf4c2" path="res://sprites/chopping_board.png" id="6_tlfqd"]
+[ext_resource type="Texture2D" uid="uid://b114u7ae7fuwm" path="res://sprites/counters.png" id="7_bb3s0"]
+[ext_resource type="Texture2D" uid="uid://dloloip6ld3y3" path="res://sprites/platter.png" id="8_rnoqo"]
+[ext_resource type="Texture2D" uid="uid://c1cp52rmidfsr" path="res://sprites/tablecloth.png" id="9_edxaw"]
+[ext_resource type="Texture2D" uid="uid://di5mq7lrt5tkk" path="res://sprites/bell.png" id="10_8j5cq"]
+[ext_resource type="Texture2D" uid="uid://ccueddlu0usuw" path="res://sprites/lava_fryer/lava_fryer_1.png" id="11_ymrt5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ufpop"]
+atlas = ExtResource("7_bb3s0")
+region = Rect2(0, 0, 21, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ot7yw"]
+atlas = ExtResource("7_bb3s0")
+region = Rect2(0, 19, 21, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rgntf"]
+atlas = ExtResource("7_bb3s0")
+region = Rect2(21, 0, 21, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_88cmg"]
+atlas = ExtResource("7_bb3s0")
+region = Rect2(21, 19, 21, 19)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_02jy5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ufpop")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ot7yw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rgntf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_88cmg")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="GameplayHelp" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 586.0
+offset_bottom = 357.0
+color = Color(0.141176, 0.141176, 0.141176, 0.913725)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = 47.0
+offset_top = 18.0
+offset_right = 257.0
+offset_bottom = 71.0
+text = "This is the grill. It allows you to cook patties."
+
+[node name="Grill(1)" type="Sprite2D" parent="."]
+position = Vector2(27, 41)
+scale = Vector2(1.41667, 1.41667)
+texture = ExtResource("1_vp288")
+
+[node name="Patty-01" type="Sprite2D" parent="."]
+position = Vector2(27, 91)
+scale = Vector2(2, 2)
+texture = ExtResource("2_oo8jt")
+
+[node name="Patty-02" type="Sprite2D" parent="."]
+position = Vector2(27, 110)
+scale = Vector2(2, 2)
+texture = ExtResource("2_oo8jt")
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="."]
+offset_left = 47.0
+offset_top = 78.0
+offset_right = 257.0
+offset_bottom = 131.0
+text = "These are burger patties. Cook them on the grill."
+
+[node name="LettuceUnchopped" type="Sprite2D" parent="."]
+position = Vector2(28, 154)
+scale = Vector2(2, 2)
+texture = ExtResource("3_4d7k2")
+
+[node name="Potato" type="Sprite2D" parent="."]
+position = Vector2(29, 174)
+scale = Vector2(2, 2)
+texture = ExtResource("4_krlyp")
+
+[node name="Bread" type="Sprite2D" parent="."]
+position = Vector2(29, 192)
+scale = Vector2(2, 2)
+texture = ExtResource("5_grnei")
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="."]
+offset_left = 46.0
+offset_top = 138.0
+offset_right = 256.0
+offset_bottom = 210.0
+text = "These are all choppable items. Chop them at the chopping board."
+
+[node name="ChoppingBoard" type="Sprite2D" parent="."]
+position = Vector2(27, 259)
+rotation = 4.71239
+scale = Vector2(2, 2)
+texture = ExtResource("6_tlfqd")
+
+[node name="RichTextLabel4" type="RichTextLabel" parent="."]
+offset_left = 46.0
+offset_top = 225.0
+offset_right = 256.0
+offset_bottom = 297.0
+text = "This is the chopping board. You must remain near while it chops items."
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(299, 42)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_02jy5")
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
+position = Vector2(299, 80)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_02jy5")
+frame = 1
+
+[node name="Platter" type="Sprite2D" parent="."]
+position = Vector2(299, 58)
+scale = Vector2(2, 2)
+texture = ExtResource("8_rnoqo")
+
+[node name="RichTextLabel5" type="RichTextLabel" parent="."]
+offset_left = 332.0
+offset_top = 16.0
+offset_right = 554.0
+offset_bottom = 112.0
+text = "This is a platter. It has unlimited items of its type. You must pick up one each time you need one."
+
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="."]
+position = Vector2(299, 150)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_02jy5")
+
+[node name="AnimatedSprite2D4" type="AnimatedSprite2D" parent="."]
+position = Vector2(299, 188)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_02jy5")
+frame = 1
+
+[node name="Tablecloth" type="Sprite2D" parent="."]
+position = Vector2(299, 153)
+scale = Vector2(2, 0.911765)
+texture = ExtResource("9_edxaw")
+
+[node name="Tablecloth2" type="Sprite2D" parent="."]
+position = Vector2(299, 187)
+scale = Vector2(2, 0.882353)
+texture = ExtResource("9_edxaw")
+
+[node name="Bell" type="Sprite2D" parent="."]
+position = Vector2(288, 143)
+scale = Vector2(2, 2)
+texture = ExtResource("10_8j5cq")
+
+[node name="Bell2" type="Sprite2D" parent="."]
+position = Vector2(288, 178)
+scale = Vector2(2, 2)
+texture = ExtResource("10_8j5cq")
+
+[node name="RichTextLabel6" type="RichTextLabel" parent="."]
+offset_left = 330.0
+offset_top = 127.0
+offset_right = 552.0
+offset_bottom = 284.0
+text = "This is a serving table. To complete a request, put a plate on it with a completed meal. A plate can also be added to, on here, until it has a completed meal."
+
+[node name="LavaFryer1" type="Sprite2D" parent="."]
+position = Vector2(26, 328)
+scale = Vector2(2, 2)
+texture = ExtResource("11_ymrt5")
+
+[node name="RichTextLabel7" type="RichTextLabel" parent="."]
+offset_left = 45.0
+offset_top = 304.0
+offset_right = 267.0
+offset_bottom = 359.0
+text = "This is the fryer. You can use it to fry uncooked fries."
+
+[node name="RichTextLabel8" type="RichTextLabel" parent="."]
+offset_left = 309.0
+offset_top = 294.0
+offset_right = 567.0
+offset_bottom = 358.0
+text = "See Recipe tab for more help!"

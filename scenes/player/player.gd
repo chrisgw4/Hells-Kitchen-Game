@@ -9,16 +9,37 @@ class_name Player
 
 @export var animated_sprite:AnimatedSprite2D
 
+var number_soda:int = 0
+var number_burger:int = 0
+var number_fries:int = 0
+
+var sold_arr:Array[SellData] = []
+
+func add_sold_data(item_name:String, base_points:int, bonus_points:int, bonus_type:int):
+	var temp:SellData = SellData.new()
+	temp.item_name = item_name
+	temp.base_points = base_points
+	temp.bonus_points = bonus_points
+	temp.bonus = bonus_type
+	sold_arr.append(temp)
+
 # Signal used for cancelling process of chopping or other use
 signal stop_using_cooking_station()
 
 signal show_interact_key()
 
-var player_using_station:bool = false
+var in_range_of_object:bool = false:
+	set(new_val):
+		in_range_of_object = new_val
+		
 
 var player_place_cooldown:float = 0.25
 
 var can_player_place:bool = true
+
+var points:int = 0:
+	set(new_val):
+		points = new_val
 
 func start_place_cool_down() -> void:
 	can_player_place = false
@@ -36,20 +57,10 @@ var carried_item:Item = null:
 
 
 
-func start_using_station() -> void:
-	player_using_station = true
-
-func stop_using_station() -> void:
-	player_using_station = false
-
 
 func get_input() -> void:
 	var dir:Vector2 = Vector2(Input.get_action_strength("move_right") - Input.get_action_strength("move_left"), Input.get_action_strength("move_down") - Input.get_action_strength("move_up"))
 	
-	# if the player clicks and key the user will stop doing whatever cooking process it was locked in
-	if dir != Vector2.ZERO and player_using_station:
-		stop_using_cooking_station.emit()
-		player_using_station = false
 	
 	vel_component.accelerate_in_direction(dir)
 	

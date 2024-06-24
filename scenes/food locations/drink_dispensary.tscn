@@ -1,13 +1,92 @@
-[gd_scene load_steps=3 format=3 uid="uid://ciq7uaue7nd8f"]
+[gd_scene load_steps=10 format=3 uid="uid://ciq7uaue7nd8f"]
 
 [ext_resource type="Script" path="res://scenes/food locations/drink_dispensary.gd" id="1_pi082"]
+[ext_resource type="Texture2D" uid="uid://dj83jjmn81m2x" path="res://sprites/drink_machine.png" id="2_wo1lq"]
 [ext_resource type="PackedScene" uid="uid://cqlh353itkokj" path="res://scenes/components/interaction/interaction_component.tscn" id="2_xqbai"]
+[ext_resource type="AudioStream" uid="uid://cmhqhyk0pha4e" path="res://audio/soda-pour-72514.wav" id="4_npghl"]
 
-[node name="DrinkDispensary" type="StaticBody2D"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_64lhg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_wo1lq")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2gdn8"]
+
+[sub_resource type="Animation" id="Animation_dc6ce"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_il06f"]
+resource_name = "shimmer"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1.5, 1.5, 1.5, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_prf52"]
+_data = {
+"RESET": SubResource("Animation_dc6ce"),
+"shimmer": SubResource("Animation_il06f")
+}
+
+[node name="DrinkDispensary" type="StaticBody2D" node_paths=PackedStringArray("interaction_component", "node_holding_items", "fill_timer")]
 script = ExtResource("1_pi082")
+interaction_component = NodePath("InteractionComponent")
+node_holding_items = NodePath("HeldItem")
+fill_timer = NodePath("FillTimer")
+
+[node name="HeldItem" type="Node2D" parent="."]
+position = Vector2(-5, 0)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_64lhg")
+flip_h = true
 
-[node name="InteractionComponent" parent="." instance=ExtResource("2_xqbai")]
+[node name="InteractionComponent" parent="." node_paths=PackedStringArray("collision_shape") instance=ExtResource("2_xqbai")]
+collision_shape = NodePath("CollisionShape2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionComponent"]
+position = Vector2(-16, 0)
+shape = SubResource("RectangleShape2D_2gdn8")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_npghl")
+volume_db = -5.0
+bus = &"Sound Effects"
+
+[node name="FillTimer" type="Timer" parent="."]
+wait_time = 2.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_prf52")
+}
+
+[connection signal="timeout" from="FillTimer" to="." method="_on_fill_timer_timeout"]
